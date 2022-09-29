@@ -1,7 +1,21 @@
 from flask import Flask, render_template
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+app.config['SQLACLHEMY_DATABASE_URI'] = 'sqlite:///shop.db'
+db = SQLAlchemy()
 
+# БД - Таблицы - Записи
+# Таблица:
+# id     title     price    isActivate
+# 1      some      100      True
+# 2      some2     200      False
+# 3      some3     40       True
+class Item(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    price = db.Column(db.Integer, nullable=True)
+    isActivate = db.Column(db.Boolean, default=True)
 
 @app.route('/')
 def index():
