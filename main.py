@@ -2,8 +2,8 @@ from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SQLACLHEMY_DATABASE_URI'] = 'sqlite:///shop.db'
-db = SQLAlchemy()
+app.config['SQLALHEMY_DATABASE_URI'] = 'sqlite:///shop.db'
+db = SQLAlchemy(app)
 
 # БД - Таблицы - Записи
 # Таблица:
