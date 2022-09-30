@@ -1,1 +1,1 @@
-# pythonProject
+Flask, jinja, python, html
