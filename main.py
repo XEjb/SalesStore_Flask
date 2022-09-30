@@ -6,6 +6,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///shop.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
+
 # БД - Таблицы - Записи
 # Таблица:
 # id     title     price    isActivate
@@ -18,10 +19,14 @@ class Item(db.Model):
     price = db.Column(db.Integer, nullable=True)
     isActivate = db.Column(db.Boolean, default=True)
 
+    def __repr__(self):
+        return self.title
+
+
 @app.route('/')
 def index():
     items = Item.query.order_by(Item.price).all()
-    return render_template('index.html',data=items)
+    return render_template('index.html', data=items)
 
 
 @app.route('/about')
